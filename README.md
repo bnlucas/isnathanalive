@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# I'm Alive, I Swear!
 
-## Getting Started
+This is a small, tongue-in-cheek web app for my friends and family who, bless their hearts, worry about me living alone. Instead of having to constantly message them back, this site provides a real-time status update to prove I'm still mobile and kickin.
 
-First, run the development server:
+It's a simple, low-tech way to say: "Hey, I'm alive, don't worry!"
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## See it in action
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Curious to see if I'm still kickin? Head over to **[isnatthanalive.com](https://isnatthanalive.com)**.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## How it Works
 
-To learn more about Next.js, take a look at the following resources:
+The site uses a simple motion sensor in my garage. When I walk by, it sends a webhook to a serverless function hosted on Vercel. This function updates a timestamp in an Upstash Redis database.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The frontend of the site then reads this timestamp and displays a short, humorous message about how long it's been since the last "ping."
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Key Technologies
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Next.js**: The frontend framework for a fast, modern web experience.
+- **Upstash Redis**: A serverless, globally distributed Redis database for storing the single timestamp.
+- **Vercel**: The platform hosting both the Next.js app and the serverless API endpoint.
+- **Motion Sensor**: The physical trigger that sends the initial ping.
+- **Webhooks**: The magical glue that connects the motion sensor to the serverless function.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Setup
+
+1.  **Clone the Repository**:
+
+    ```bash
+    git clone [your-repo-link]
+    cd [your-repo-name]
+    ```
+
+2.  **Environment Variables**:
+    You'll need a `.env.local` file with your Upstash Redis credentials.
+
+    ```bash
+    UPSTASH_REDIS_REST_URL="your_upstash_redis_url"
+    UPSTASH_REDIS_REST_TOKEN="your_upstash_redis_token"
+    ```
+
+3.  **Install Dependencies**:
+
+    ```bash
+    npm install
+    ```
+
+4.  **Run Locally**:
+    ```bash
+    npm run dev
+    ```
+
+---
+
+## Webhook Configuration
+
+Configure your motion sensor to send a `POST` request to `[your-domain.com]/api/ping`. The API endpoint will automatically update the timestamp in Redis.
+
+Example webhook URL: `https://im-alive-iswear.vercel.app/api/ping`
+
+---
+
+## Why?
+
+This project is a lighthearted way to address a serious, but well-meaning, concern from loved ones. It replaces constant check-ins with a quick, reassuring glance at a website, giving everyone some peace of mind.
