@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getLastPing } from "@/lib/upstash";
 import { daysSense, wordifyTimeframe } from "@/lib/timeframe";
 
 export default function Home() {
