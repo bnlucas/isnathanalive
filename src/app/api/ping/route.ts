@@ -17,11 +17,10 @@ export async function GET(): Promise<NextResponse<GetResponse>> {
 export async function POST(
   request: Request
 ): Promise<NextResponse<PostResponse> | NextResponse> {
-  const authorizationHeader = request.headers.get("Authorization");
+  const url = new URL(request.url);
+  const token = url.searchParams.get("api_token");
 
-  if (authorizationHeader !== `Bearer ${process.env.API_TOKEN}`) {
-    console.log(`Expected: Bearer ${process.env.API_TOKEN}`);
-    console.log(`Actual:   ${authorizationHeader}`);
+  if (token !== process.env.API_TOKEN) {
     return new NextResponse("Unauthorized", { status: 401 });
   }
 
