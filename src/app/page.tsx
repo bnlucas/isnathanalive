@@ -55,7 +55,7 @@ export default function Home() {
   const action = `${days <= 1 ? "got dunks" : "no dunks in"} `;
 
   return (
-    <div className="text-[14vw] md:text-[10vw] lg:text-[8vw] uppercase leading-none text-left mt-[20vh]">
+    <div className="text-[14vw] md:text-[10vw] lg:text-[8vw] uppercase leading-none text-left mt-[15vh]">
       <div className="after:content-[',']">
         {action}
         <span className="underline decoration-pink decoration-[0.6vw]">
