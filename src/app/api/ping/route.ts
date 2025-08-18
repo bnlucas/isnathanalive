@@ -16,7 +16,7 @@ export async function GET(): Promise<NextResponse<GetResponse>> {
 
 export async function POST(
   request: Request
-): Promise<NextResponse<PostResponse> | NextResponse> {
+): Promise<NextResponse> {
   const url = new URL(request.url);
   const token = url.searchParams.get("api_token");
 
@@ -24,6 +24,24 @@ export async function POST(
     return new NextResponse("Unauthorized", { status: 401 });
   }
 
-  await setLastPing();
-  return NextResponse.json<PostResponse>({ ok: true });
+  let body: any;
+
+  try {
+    body = await request.json();
+  } catch {
+    return new NextResponse("Invalid JSON", { status: 400 });
+  }
+
+  const { eventType, context } = body || {};
+
+  if (
+    eventType === "changeReport" &&
+    context?.deviceType === "WoPresence" &&
+    context?.detectionState === "DETECTED"
+  ) {
+    await setLastPing();
+    return NextResponse.json({ ok: true, updated: true });
+  }
+
+  return NextResponse.json({ ok: true, updated: false });
 }

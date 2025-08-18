@@ -55,10 +55,10 @@ export default function Home() {
   const action = `${days <= 1 ? "got dunks" : "no dunks in"} `;
 
   return (
-    <div className="text-[6vw] md:text-[10vw] uppercase leading-none text-left">
+    <div className="text-[14vw] md:text-[10vw] lg:text-[8vw] uppercase leading-none text-left mt-[20vh]">
       <div className="after:content-[',']">
         {action}
-        <span className="underline decoration-[var(--color-timeframe)] decoration-[0.4rem]">
+        <span className="underline decoration-pink decoration-[0.6vw]">
           {wordifyTimeframe(lastPing)}
         </span>
       </div>
@@ -66,7 +66,7 @@ export default function Home() {
         className={opinion === "maybe" ? "after:content-['?']" : "after:content-['.']"}
       >
         <span
-          className="underline decoration-[var(--color-opinion)] decoration-[0.4rem]"
+          className="underline decoration-orange decoration-[0.6vw]"
         >
           {opinion}
         </span>

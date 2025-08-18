@@ -1,18 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-orange: rgb(245, 130, 31);
+  --color-pink: rgb(225, 19, 131);
+}
 
 :root {
   --background: #fff;
   --foreground: #171717;
-  --color-opinion: rgb(245, 130, 31);
-  --color-timeframe: rgb(225, 19, 131);
-}
-
-html {
-  -moz-text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
 }
 
 html,
@@ -31,9 +26,9 @@ body {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
-    --color-opinion: rgb(210, 100, 20);
-    --color-timeframe: rgb(200, 10, 120);
-    /* --color-opinion: rgb(255, 160, 50);
-    --color-timeframe: rgb(235, 50, 160); */
+    --color-orange: rgb(210, 100, 20);
+    --color-pink: rgb(200, 10, 120);
+    /* --color-orange: rgb(255, 160, 50);
+    --color-pink: rgb(235, 50, 160); */
   }
 }
