@@ -8,7 +8,7 @@ It's a simple, low-tech way to say: "Hey, I'm alive, don't worry!"
 
 ## See it in action
 
-Curious to see if I'm still kickin? Head over to **[isnatthanalive.com](https://isnatthanalive.com)**.
+Curious to see if I'm still kickin? Head over to **[isnathanalive.com](https://isnathanalive.com)**.
 
 ---
 
