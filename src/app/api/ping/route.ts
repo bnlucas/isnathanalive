@@ -10,6 +10,18 @@ type PostResponse = {
   updated: boolean;
 };
 
+interface SwitchBotMotionEvent {
+  eventType: string;
+  eventVersion: string;
+  context: {
+    deviceType: string;
+    deviceMac: string;
+    detectionState: "DETECTED" | "NOT_DETECTED";
+    battery: number;
+    timeOfSample: number;
+  };
+}
+
 export async function GET(): Promise<NextResponse<GetResponse>> {
   const lastPing = await getLastPing();
   return NextResponse.json<GetResponse>({ last_ping: lastPing });
@@ -25,10 +37,10 @@ export async function POST(
     return new NextResponse("Unauthorized", { status: 401 });
   }
 
-  let body: any;
+  let body: SwitchBotMotionEvent;
 
   try {
-    body = await request.json();
+    body = (await request.json()) as SwitchBotMotionEvent;
   } catch {
     return new NextResponse("Invalid JSON", { status: 400 });
   }
