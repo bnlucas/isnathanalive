@@ -7,6 +7,7 @@ type GetResponse = {
 
 type PostResponse = {
   ok: boolean;
+  updated: boolean;
 };
 
 export async function GET(): Promise<NextResponse<GetResponse>> {
@@ -16,7 +17,7 @@ export async function GET(): Promise<NextResponse<GetResponse>> {
 
 export async function POST(
   request: Request
-): Promise<NextResponse> {
+): Promise<NextResponse<PostResponse>> {
   const url = new URL(request.url);
   const token = url.searchParams.get("api_token");
 
