@@ -38,7 +38,7 @@ export default function Home() {
 
   if (error) {
     return (
-      <div className="text-[10vw] md:text-[6vw] text-center uppercase leading-none text-red-500 p-[6rem]">
+      <div className="text-[14vw] md:text-[10vw] lg:text-[8vw] text-center uppercase leading-none text-red-500 p-[6rem]">
         {error}
       </div>
     );
