@@ -3,7 +3,7 @@ import { daysSince } from './timeframe';
 /**
  * The set of supported action types for the health check.
  */
-export type ActionType = 'dunkin' | 'smoke' | 'mail' | 'outside';
+type ActionType = 'dunkin' | 'smoke' | 'mail' | 'outside';
 
 /**
  * Defines the text for an action type, with separate messages

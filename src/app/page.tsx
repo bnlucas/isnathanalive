@@ -14,7 +14,7 @@ export default async function Home() {
   if (!lastPing) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen text-[8vw] text-center uppercase leading-none text-red-500 p-[6rem]">
-        Uh oh. The wires are crossed. The system is offline. Maybe try yelling 'Hello?' at your screen.
+        Uh oh. The wires are crossed. The system is offline. Maybe try yelling &lsquo;Hello?&rsquo; at your screen.
       </div>
     );
   }

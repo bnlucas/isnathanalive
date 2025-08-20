@@ -1,5 +1,5 @@
 import { wordifyTimeframe } from "@/lib/timeframe";
-import { getRandomAction, ActionType } from "@/lib/action";
+import { getRandomAction } from "@/lib/action";
 
 export default function HealthCheck({ lastPing }: { lastPing: string }) {
   const lastPingDate = new Date(lastPing);
