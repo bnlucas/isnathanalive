@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Bebas_Neue } from "next/font/google";
 import "@/app/globals.css";
 
@@ -8,6 +9,10 @@ const bebasNeue = Bebas_Neue({
   subsets: ["latin"],
 });
 
+export const metadata: Metadata = {
+  title: "Is Nathan Alive?",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -16,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${bebasNeue.variable} antialiased flex flex-col items-center justify-center min-h-screen`}
+        className={`${bebasNeue.variable} antialiased`}
       >
         {children}
       </body>

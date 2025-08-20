@@ -1,13 +1,30 @@
 @import "tailwindcss";
-
-@theme {
-  --color-orange: rgb(245, 130, 31);
-  --color-pink: rgb(225, 19, 131);
-}
+@source inline("decoration-{dunkin,smoke,mail,outside}-{1,2}");
 
 :root {
   --background: #fff;
   --foreground: #171717;
+  --dunkin-1: #f5831f;
+  --dunkin-2: #e11384;
+  --smoke-1: #fff;
+  --smoke-2: #c80000;
+  --mail-1: #fff;
+  --mail-2: #004b87;
+  --outside-1: #00d68f;
+  --outside-2: #007c59;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-dunkin-1: var(--dunkin-1);
+  --color-dunkin-2: var(--dunkin-2);
+  --color-smoke-1: var(--smoke-1);
+  --color-smoke-2: var(--smoke-2);
+  --color-mail-1: var(--mail-1);
+  --color-mail-2: var(--mail-2);
+  --color-outside-1: var(--outside-1);
+  --color-outside-2: var(--outside-2);
 }
 
 html,
@@ -26,9 +43,7 @@ body {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
-    --color-orange: rgb(210, 100, 20);
-    --color-pink: rgb(200, 10, 120);
-    /* --color-orange: rgb(255, 160, 50);
-    --color-pink: rgb(235, 50, 160); */
+    --dunkin-1: #d26314;
+    --dunkin-2: #c80a79;
   }
 }
