@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Bebas_Neue } from "next/font/google";
 import "@/app/globals.css";
 
@@ -23,6 +25,8 @@ export default function RootLayout({
       <body
         className={`${bebasNeue.variable} antialiased`}
       >
+        <Analytics />
+        <SpeedInsights />
         {children}
       </body>
     </html>
