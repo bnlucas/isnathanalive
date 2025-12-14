@@ -89,7 +89,7 @@ export async function POST(
     context?.deviceType === 'WoPresence' &&
     context?.detectionState === 'DETECTED'
   ) {
-    await setLastPing();
+    // await setLastPing();
     return NextResponse.json({ ok: true, updated: true });
   }
 
