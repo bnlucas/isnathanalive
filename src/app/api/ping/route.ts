@@ -1,4 +1,4 @@
-import { getLastPing, setLastPing } from '@/lib/upstash';
+import { getLastPing } from '@/lib/upstash';
 import { NextResponse } from 'next/server';
 
 /**
