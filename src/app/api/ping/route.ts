@@ -62,37 +62,38 @@ export async function GET(): Promise<NextResponse<GetResponse>> {
  * Body: { eventType: "changeReport", context: { ... } }
  * → { ok: true, updated: true }
  */
-export async function POST(
-  request: Request
-): Promise<NextResponse<PostResponse>> {
+export async function POST(request: Request) {
   const url = new URL(request.url);
   const token = url.searchParams.get('api_token');
 
-  // Reject if the token is invalid
   if (token !== process.env.API_TOKEN) {
     return new NextResponse('Unauthorized', { status: 401 });
   }
 
-  let body: SwitchBotMotionEvent;
+  let body: unknown;
 
   try {
-    body = (await request.json()) as SwitchBotMotionEvent;
+    body = await request.json();
   } catch {
     return new NextResponse('Invalid JSON', { status: 400 });
   }
 
-  const { eventType, context } = body || {};
+  const receivedAt = new Date();
 
-  // Only update if the event is a motion detection
+  console.log('SwitchBot webhook', {
+    receivedAt: receivedAt.toISOString(),
+    body,
+  });
+
+  const { eventType, context } = (body as SwitchBotMotionEvent) ?? {};
+
   if (
     eventType === 'changeReport' &&
     context?.deviceType === 'WoPresence' &&
     context?.detectionState === 'DETECTED'
   ) {
-    // await setLastPing();
     return NextResponse.json({ ok: true, updated: true });
   }
 
-  // If event type/context doesn't match, do not update
   return NextResponse.json({ ok: true, updated: false });
 }
