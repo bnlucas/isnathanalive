@@ -62,7 +62,9 @@ export async function GET(): Promise<NextResponse<GetResponse>> {
  * Body: { eventType: "changeReport", context: { ... } }
  * → { ok: true, updated: true }
  */
-export async function POST(request: Request) {
+export async function POST(
+  request: Request
+): Promise<NextResponse<PostResponse>> {
   const url = new URL(request.url);
   const token = url.searchParams.get('api_token');
 
