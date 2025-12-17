@@ -73,7 +73,7 @@ export async function POST(
     return new NextResponse('Unauthorized', { status: 401 });
   }
 
-  let body: unknown;
+  let body: SwitchBotMotionEvent;
 
   try {
     body = await request.json();
@@ -81,14 +81,8 @@ export async function POST(
     return new NextResponse('Invalid JSON', { status: 400 });
   }
 
-  const receivedAt = new Date();
-
-  console.log('Switchbot Event:', {
-    receivedAt: receivedAt.toISOString(),
-    body,
-  });
-
-  const { eventType, context } = (body as SwitchBotMotionEvent) || {};
+  console.log('Switchbot ', { body });
+  const { eventType, context } = body || {};
 
   // Only update if the event is a motion detection
   if (
