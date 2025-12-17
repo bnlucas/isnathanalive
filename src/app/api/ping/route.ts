@@ -73,7 +73,7 @@ export async function POST(
     return new NextResponse('Unauthorized', { status: 401 });
   }
 
-  let body;
+  let body: unknown;
 
   try {
     body = await request.json();
@@ -81,7 +81,12 @@ export async function POST(
     return new NextResponse('Invalid JSON', { status: 400 });
   }
 
-  console.log('Event:', JSON.stringify(body));
+  const receivedAt = new Date();
+
+  console.log('Switchbot Event:', {
+    receivedAt: receivedAt.toISOString(),
+    body,
+  });
 
   const { eventType, context } = (body as SwitchBotMotionEvent) || {};
 
