@@ -98,14 +98,14 @@ export function wordifyTimeframe(
   const months = fullMonthsBetween(a, b);
 
   if (months === 0) {
-    return `${wordify(dayDiff)} day${dayDiff === 1 ? '' : 's'} ago`;
+    return `${wordify(dayDiff)} day${dayDiff === 1 ? '' : 's'}`;
   }
 
   if (months === 1) return 'over a month';
-  if (months < 12) return `${wordify(months)} months ago`;
+  if (months < 12) return `${wordify(months)} months`;
 
   const years = Math.floor(months / 12);
 
-  if (years === 1) return 'over a year ago';
-  return `${wordify(years)} years ago`;
+  if (years === 1) return 'over a year';
+  return `${wordify(years)} years`;
 }
