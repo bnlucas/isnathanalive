@@ -1,4 +1,4 @@
-import { getLastPing } from '@/lib/upstash';
+import { getLastPing, setLastPing } from '@/lib/upstash';
 import { NextResponse } from 'next/server';
 
 /**
@@ -90,7 +90,7 @@ export async function POST(
     context?.deviceType === 'WoPresence' &&
     context?.detectionState === 'DETECTED'
   ) {
-    // await setLastPing();
+    await setLastPing();
     return NextResponse.json({ ok: true, updated: true });
   }
 
