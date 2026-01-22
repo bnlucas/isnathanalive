@@ -49,7 +49,7 @@ export async function getLastPing(): Promise<Date | null> {
  */
 export async function setLastPing(): Promise<void> {
   try {
-    await redis.set('last_ping', new Date().toISOString());
+    // await redis.set('last_ping', new Date().toISOString());
   } catch (err) {
     console.error('Upstash error: Failed to set last ping', err);
   }
